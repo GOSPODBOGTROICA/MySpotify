@@ -19,19 +19,23 @@ jobs:
           channel: 'stable'
           cache: true
 
-      - name: Initialize Flutter Project
+      - name: Initialize Project and Get Dependencies
         run: |
           flutter create --platforms ios .
-          sed -i '' "s/^# platform :ios, '12.0'/platform :ios, '14.0'/g" ios/Podfile
-          sed -i '' "s/IPHONEOS_DEPLOYMENT_TARGET = 12.0/IPHONEOS_DEPLOYMENT_TARGET = 14.0/g" ios/Runner.xcodeproj/project.pbxproj
-          sed -i '' "s/IPHONEOS_DEPLOYMENT_TARGET = 11.0/IPHONEOS_DEPLOYMENT_TARGET = 14.0/g" ios/Runner.xcodeproj/project.pbxproj
+          flutter pub get
 
-      - name: Install Dependencies
-        run: flutter pub get
+      - name: Fix iOS Deployment Target
+        run: |
+          # The Podfile is created after flutter pub get
+          if [ -f ios/Podfile ]; then
+            sed -i '' "s/^# platform :ios.*/platform :ios, '14.0'/g" ios/Podfile
+          fi
+          sed -i '' "s/IPHONEOS_DEPLOYMENT_TARGET = 12.0/IPHONEOS_DEPLOYMENT_TARGET = 14.0/g" ios/Runner.xcodeproj/project.pbxproj || true
+          sed -i '' "s/IPHONEOS_DEPLOYMENT_TARGET = 11.0/IPHONEOS_DEPLOYMENT_TARGET = 14.0/g" ios/Runner.xcodeproj/project.pbxproj || true
 
       - name: Build iOS Application (Release, unsigned)
         run: |
-          flutter build ios --release --no-codesign --verbose
+          flutter build ios --release --no-codesign
 
       - name: Package Payload into IPA
         run: |
