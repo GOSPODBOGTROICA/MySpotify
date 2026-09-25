@@ -21,7 +21,7 @@ jobs:
 
       - name: Initialize Project and Get Dependencies
         run: |
-          flutter create --platforms ios .
+          flutter create --project-name custom_spotify --platforms ios .
           flutter pub get
 
       - name: Fix iOS Deployment Target
