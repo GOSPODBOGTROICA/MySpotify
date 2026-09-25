@@ -1,0 +1,53 @@
+{
+  "app_name": "Spotify Custom",
+  "version": "1.0.0",
+  "bundle_id": "com.custom.spotify.player",
+  "theme": {
+    "background_color": "#121212",
+    "surface_color": "#181818",
+    "card_color": "#282828",
+    "accent_color": "#1DB954",
+    "text_primary": "#FFFFFF",
+    "text_secondary": "#B3B3B3"
+  },
+  "fonts": {
+    "primary": "CircularSp-Cyrl-Book.ttf",
+    "bold": "CircularSp-Cyrl-Bold.ttf",
+    "black": "CircularSp-Cyrl-Black.ttf",
+    "icons": "spoticon.ttf"
+  },
+  "playback_settings": {
+    "crossfade": {
+      "enabled": true,
+      "default_seconds": 6,
+      "min_seconds": 1,
+      "max_seconds": 12,
+      "step_seconds": 1
+    },
+    "autoplay": {
+      "enabled": true,
+      "description": "Автовоспроизведение похожих треков после окончания плейлиста"
+    },
+    "audio_quality": {
+      "format": "Opus / AAC",
+      "bitrate_kbps": 160,
+      "normalize_volume": true
+    }
+  },
+  "streaming_network": {
+    "bypass_vpn_required": true,
+    "primary_gateway": "https://pipedapi.kavin.rocks",
+    "backup_gateways": [
+      "https://api.piped.privacydev.net",
+      "https://piped-api.lunar.icu"
+    ]
+  },
+  "spotify_integration": {
+    "playlist_importer": true,
+    "supported_links": [
+      "open.spotify.com/playlist/*",
+      "open.spotify.com/album/*",
+      "open.spotify.com/track/*"
+    ]
+  }
+}
