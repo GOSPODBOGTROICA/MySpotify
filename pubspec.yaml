@@ -9,9 +9,9 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
-  audioplayers: ^6.0.0
-  youtube_explode_dart: ^2.2.2
-  shared_preferences: ^2.2.3
+  audioplayers: any
+  youtube_explode_dart: any
+  shared_preferences: any
 
 dev_dependencies:
   flutter_test:
@@ -27,12 +27,11 @@ flutter:
     - family: CircularSp
       fonts:
         - asset: assets/fonts/CircularSp-Cyrl-Book.ttf
+          weight: 300
         - asset: assets/fonts/CircularSp-Cyrl-Bold.ttf
           weight: 700
         - asset: assets/fonts/CircularSp-Cyrl-Black.ttf
           weight: 900
-        - asset: assets/fonts/CircularSp-Cyrl-Book.ttf
-          weight: 300
     - family: Spoticon
       fonts:
         - asset: assets/fonts/spoticon.ttf
