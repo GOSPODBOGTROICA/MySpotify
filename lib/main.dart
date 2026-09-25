@@ -61,7 +61,7 @@ class _MainNavigationScreenState extends State<MainNavigationScreen> {
       _isPlaying = true;
     });
     // Search youtube for the track + artist and play it
-    await _audioService.playTrack("\$title \$artist audio");
+    await _audioService.playTrack("$title $artist audio");
   }
 
   @override
